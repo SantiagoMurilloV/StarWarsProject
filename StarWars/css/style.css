@@ -1,0 +1,152 @@
+
+
+/* html{
+    box-sizing: border-box;}
+    
+}
+*, *::before, *::after{
+    box-sizing: inherit; 
+}  */
+
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color:black;
+    background-image: url('https://p4.wallpaperbetter.com/wallpaper/201/929/79/digital-art-star-wars-death-star-black-wallpaper-preview.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+}
+
+
+.title {
+    /* background-color: rgba(0, 0, 0, 0.5); 50% de opacidad */
+    perspective: 400px;
+    transform-style: preserve-3d;
+    transform: rotateY(30deg);
+    /* display: flex; */
+    /* position: relative; */
+    transform: translate(740px, -70px);
+
+    align-items: center;
+    width: 15%; 
+    margin-top: 100px; 
+
+}
+
+.mainContainer{
+
+    margin-top:-300px;
+    width: 100%;
+    /* margin: auto; */
+    
+    display:flex ;
+    flex-flow:space-evenly;
+    overflow-x: scroll;
+    scrollbar-width: none;
+
+    align-items: center;
+    height: 100vh; 
+    overflow: -moz-scrollbars-none;
+    
+    
+
+
+}
+
+.mainContainer::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+.containerCards{
+    
+    display:flex;
+    flex-wrap: nowrap;
+    
+        
+}
+
+.card{
+    
+    margin-right: 160px;
+    white-space: normal;
+    background-color:rgba(245, 242, 242, 0.606);
+    border-radius:20px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    
+}
+
+.cardHeader{
+    width: auto;
+    height: 120px;
+    display:flex;
+}
+.cardBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid gray;
+}
+
+.cardBodyImg{
+    border: 5px solid rgba(248, 248, 248, 0.245);
+    border-radius: 100%;
+    margin-top:calc(-65px - 5px);
+    width: 90px;
+    background-color: rgba(255, 255, 255, 0.641);
+    object-fit: cover;
+}
+
+.cardName{
+    font: bold;
+    font-size: 25px;
+    color: black;
+    margin: auto;
+}
+
+.cardInfo{
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    font-display: bold;
+    font-size: 15px;
+    color: rgb(96, 94, 94);
+    margin: auto;
+    
+}
+
+.button{     
+
+        background-image: url('/test/img/btn.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 80px;
+        height: 80px;
+
+        font-size: 16px; /* tamaño de fuente */
+        margin: 100px , 10px; /* margen */
+        cursor: pointer; /* cursor */
+        border-radius: 100px; /*borde redondeado */
+        
+        background-color: rgb(186, 180, 180);
+        object-fit: cover;
+
+        
+}
+
+button:hover {
+        background-color: #ff0000; /* color de fondo en hover */
+}
+
+button:active {
+        background-color: #c89403; /* color de fondo al hacer clic */
+        transform: translateY(10px); /* efecto de clic */
+}
+
+
+/* display:flex; comportamiento inline-block */
+/* width: 5px; */
+/* height: 10px; */
+/* transform: translate(740px, -70px); */
+/* align-items: center; */

@@ -1,0 +1,59 @@
+
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #000;  
+    
+    background-position: center;
+
+    /* color: #977b09; */
+} 
+
+body header{
+    /* font-family: "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    transform: perspective(300px) rotateY(15deg);
+    margin-top: 50px;
+	text-align: center; */
+	/* background-size: cover; */
+    font-family: "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    transform: perspective(300px) rotateY(15deg);
+    margin-top: 50px;
+    text-align: center;
+    color: black;
+    text-shadow: 2px 2px #fff, -2px -2px #fff, 2px -2px #fff, -2px 2px #fff, 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ffd700, 0 0 70px #ffd700;
+    -webkit-text-stroke: 2px #ffd700;
+    -webkit-text-fill-color: black;
+
+    border-radius: 40px 40px 0 0;
+    box-shadow: 0 0 10px white;
+    font-size: 20px;
+}
+
+
+.classHeader{
+    display:flex;
+    flex-wrap: nowrap;
+
+    margin-top:-300px;
+    width: 100%;
+    /* margin: auto; */
+    
+    display:flex ;
+    flex-flow:space-evenly;
+    overflow-x: scroll;
+    scrollbar-width: none;
+
+    align-items: center;
+    height: 100vh; 
+    overflow: -moz-scrollbars-none;
+    
+}
+
+.cardBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid gray;
+}
