@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     let filteredCharacters = charactersData.results;
-    
 
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         const lowerCaseSearchTerm = searchTerm.toLowerCase();
             return characters.filter((character) =>
-                character.name.toLowerCase().includes(lowerCaseSearchTerm)
+                character.name.toLowerCase().startsWith(lowerCaseSearchTerm)
         );
     };
 
