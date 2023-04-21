@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const button = document.createElement('button');
     button.className = 'button';
 
-    const renderCharacter = (character, template, containerCards) =>{
+    const renderCharacter = (character, template, containerCards) => {
 
         const clone = template.content.cloneNode(true);
         clone.querySelector('.cardName').textContent = character.name;
@@ -30,12 +30,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         const mainContainer = document.querySelector('.mainContainer');
         const containerCards = document.createElement('div');
         containerCards.className = 'containerCards';
-        const template = document.querySelector('#templateCard');    
+        const template = document.querySelector('#templateCard');
         characters.forEach((character) => renderCharacter(character, template, containerCards));
         containerCards.appendChild(button);
         mainContainer.appendChild(containerCards);
     };
-    
+
     const getCharacters = async () => {
         try {
             const res = await fetch('https://swapi.dev/api/people/');
@@ -45,11 +45,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log(error)
         }
     };
-    
+
     const charactersData = await getCharacters();
     paintAllCards(charactersData.results)
-    let nextPage =  charactersData.next;
-    
+    let nextPage = charactersData.next;
+
     button.addEventListener('click', async () => {
         try {
             const res = await fetch(nextPage);
@@ -57,33 +57,31 @@ document.addEventListener('DOMContentLoaded', async () => {
             const nextCharacters = dataNewPage;
             paintAllCards(nextCharacters.results);
             nextPage = nextCharacters.next;
-
         } catch (error) {
             console.log(error)
         }
     });
-
-    let filteredCharacters = charactersData.results;
 
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.placeholder = 'Search characters';
     searchInput.className = 'searchInput';
     document.body.appendChild(searchInput);
-    
-    const filterCards = (characters, searchTerm) => {
-        if (searchTerm=='') {
-            return characters;
+
+    const getCharactersSearch = async (searchTerm) => {
+        try {
+            const res = await fetch(`https://swapi.dev/api/people/?search=${searchTerm}`);
+            const data = await res.json();
+            return data.results;
+        } catch (error) {
+            console.log(error)
         }
-        const lowerCaseSearchTerm = searchTerm.toLowerCase();
-            return characters.filter((character) =>
-                character.name.toLowerCase().startsWith(lowerCaseSearchTerm)
-        );
     };
 
-    searchInput.addEventListener('input', () => {
-        const searchTerm = searchInput.value;
-        filteredCharacters = filterCards(charactersData.results, searchTerm);
+    searchInput.addEventListener('input', async (event) => {
+        event.preventDefault();
+        const searchTerm = searchInput.value
+        const filteredCharacters = await getCharactersSearch(searchTerm);
         const mainContainer = document.querySelector('.mainContainer');
         mainContainer.innerHTML = '';
         paintAllCards(filteredCharacters);
