@@ -52,7 +52,13 @@ body {
     
     
 
+}
 
+.searchInput{
+    width: 200;
+    display:flex ;
+    transform: translate(100px,-800px);
+    box-shadow: 6px 6px 6px rgba(255, 0, 0, 0.697);
 }
 
 .mainContainer::-webkit-scrollbar {
@@ -63,6 +69,7 @@ body {
     
     display:flex;
     flex-wrap: nowrap;
+    
     
         
 }
@@ -118,7 +125,7 @@ body {
 
 .button{     
 
-        background-image: url('/test/img/btn.png');
+        background-image: url('/StarWars/img/btn.png');
         background-repeat: no-repeat;
         background-size: cover;
         width: 80px;

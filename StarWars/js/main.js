@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     button.className = 'button';
 
     const renderCharacter = (character, template, containerCards) =>{
+
         const clone = template.content.cloneNode(true);
         clone.querySelector('.cardName').textContent = character.name;
         switch (character.gender) {
@@ -25,15 +26,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const paintAllCards = (characters) => {
+
         const mainContainer = document.querySelector('.mainContainer');
         const containerCards = document.createElement('div');
         containerCards.className = 'containerCards';
-        const template = document.querySelector('#templateCard');
+        const template = document.querySelector('#templateCard');    
         characters.forEach((character) => renderCharacter(character, template, containerCards));
         containerCards.appendChild(button);
         mainContainer.appendChild(containerCards);
     };
-
+    
     const getCharacters = async () => {
         try {
             const res = await fetch('https://swapi.dev/api/people/');
@@ -45,9 +47,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
     
     const charactersData = await getCharacters();
-    paintAllCards(charactersData.results);
+    paintAllCards(charactersData.results)
     let nextPage =  charactersData.next;
-
+    
     button.addEventListener('click', async () => {
         try {
             const res = await fetch(nextPage);
@@ -60,6 +62,34 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log(error)
         }
     });
+
+    let filteredCharacters = charactersData.results;
+    
+
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.placeholder = 'Search characters';
+    searchInput.className = 'searchInput';
+    document.body.appendChild(searchInput);
+    
+    const filterCards = (characters, searchTerm) => {
+        if (searchTerm=='') {
+            return characters;
+        }
+        const lowerCaseSearchTerm = searchTerm.toLowerCase();
+            return characters.filter((character) =>
+                character.name.toLowerCase().includes(lowerCaseSearchTerm)
+        );
+    };
+
+    searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value;
+        filteredCharacters = filterCards(charactersData.results, searchTerm);
+        const mainContainer = document.querySelector('.mainContainer');
+        mainContainer.innerHTML = '';
+        paintAllCards(filteredCharacters);
+    });
+
 });
 
 
